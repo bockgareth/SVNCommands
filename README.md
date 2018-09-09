@@ -12,7 +12,7 @@ sudo apt install -y openssh-server
 ```
 Create a svn folder for the repository.
 ```
-sudo mkdir -p /svn_tutorial/repos
+mkdir -p /svn_tutorial/repos
 ```
 Initialize repo in that folder with a name.
 ```
@@ -50,13 +50,29 @@ sudo svn co svn://[ip:address]/helloworld
 ```
 Enter the trunk and add some code. Then add and commit the changes.
 ```
-sudo svn add *
+svn add *
 
-sudo svn ci -m "New commit"
+svn ci -m "New commit"
 ```
 Copy the trunk to a new branch for new features.
 ```
 sudo svn cp -m "New branch" svn://[ip:address]/helloworld/trunk svn://[ip:address]/helloworld/branches/new-feature
+```
+Update the latest changes. Merge trunk into the current branch folder, and commit that changes.
+```
+sudo svn merge ^/trunk
+
+svn commit -m "Ready to reintegrate into trunk"
+```
+Go up to the trunk and reintegrate the changes from the branches.
+```
+sudo svn merge --reintegrate ^/branches/[branch_name]/
+
+svn up
+```
+Commit the final changes.
+```
+svn commit -m "Merged changes into trunk"
 ```
 Delete the branch since it has been integrated into trunk. Commit the changes, and update the repo.
 ```
@@ -64,6 +80,6 @@ Delete the branch since it has been integrated into trunk. Commit the changes, a
 
 sudo svn commit -m "Deleted branch"
 
-sudo svn up
+svn up
 ```
 
