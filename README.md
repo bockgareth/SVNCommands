@@ -57,4 +57,13 @@ sudo svn ci -m "New commit"
 Copy the trunk to a new branch for new features.
 ```
 sudo svn cp -m "New branch" svn://[ip:address]/helloworld/trunk svn://[ip:address]/helloworld/branches/new-feature
+```
+Delete the branch since it has been integrated into trunk. Commit the changes, and update the repo.
+```
+/branches $ sudo svn del [branch_name]/
+
+sudo svn commit -m "Deleted branch"
+
+sudo svn up
+```
 
