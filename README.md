@@ -7,6 +7,8 @@
 First install subversion for Linux or Unix.
 ```
 sudo apt install -y subversion
+
+sudo apt install -y openssh-server
 ```
 Create a svn folder for the repository.
 ```
